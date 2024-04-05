@@ -1,7 +1,10 @@
 import 'package:arnavbansal/constants/app_constants.dart';
+import 'package:arnavbansal/routing/app_router.dart';
 import 'package:arnavbansal/ui/common/custom_loader.dart';
 import 'package:arnavbansal/ui/common/display_error_widget.dart';
+import 'package:arnavbansal/ui/videos/video_card_item.dart';
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/models/video_model.dart';
@@ -29,7 +32,13 @@ class DisplayVideosListingScreen extends StatelessWidget{
                   return ListView.builder(
                       itemCount: videosList.length,
                       itemBuilder: (BuildContext context, int index){
-                        return Text("Video received");
+                        VideoModel currentVideoModel = videosList[index];
+                        return VideoCardItem(
+                            currentVideoModel: currentVideoModel,
+                            onVideoTapped: (){
+                              context.router.navigate(VideoPlayerRoute(videoId: currentVideoModel.videoIDs ?? ''));
+                            },
+                        );
                       }
                   );
                 }

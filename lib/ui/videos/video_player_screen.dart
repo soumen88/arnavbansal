@@ -5,7 +5,9 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 @RoutePage()
 class VideoPlayerScreen extends StatefulWidget {
-  String videoId = "_WoCV4c6XOE";
+  String videoId ;
+
+  VideoPlayerScreen({required this.videoId});
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();

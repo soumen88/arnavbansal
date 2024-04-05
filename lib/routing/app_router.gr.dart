@@ -46,9 +46,10 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     VideoPlayerRoute.name: (routeData) {
+      final args = routeData.argsAs<VideoPlayerRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: VideoPlayerScreen(),
+        child: VideoPlayerScreen(videoId: args.videoId),
       );
     },
   };
@@ -126,14 +127,29 @@ class SplashRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [VideoPlayerScreen]
-class VideoPlayerRoute extends PageRouteInfo<void> {
-  const VideoPlayerRoute({List<PageRouteInfo>? children})
-      : super(
+class VideoPlayerRoute extends PageRouteInfo<VideoPlayerRouteArgs> {
+  VideoPlayerRoute({
+    required String videoId,
+    List<PageRouteInfo>? children,
+  }) : super(
           VideoPlayerRoute.name,
+          args: VideoPlayerRouteArgs(videoId: videoId),
           initialChildren: children,
         );
 
   static const String name = 'VideoPlayerRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<VideoPlayerRouteArgs> page =
+      PageInfo<VideoPlayerRouteArgs>(name);
+}
+
+class VideoPlayerRouteArgs {
+  const VideoPlayerRouteArgs({required this.videoId});
+
+  final String videoId;
+
+  @override
+  String toString() {
+    return 'VideoPlayerRouteArgs{videoId: $videoId}';
+  }
 }
