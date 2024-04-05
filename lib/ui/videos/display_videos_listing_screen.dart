@@ -1,4 +1,5 @@
 import 'package:arnavbansal/constants/app_constants.dart';
+import 'package:arnavbansal/constants/color_constants.dart';
 import 'package:arnavbansal/routing/app_router.dart';
 import 'package:arnavbansal/ui/common/custom_loader.dart';
 import 'package:arnavbansal/ui/common/display_error_widget.dart';
@@ -11,10 +12,62 @@ import '../../core/models/video_model.dart';
 import '../../core/video_listing_config.dart';
 
 @RoutePage()
-class DisplayVideosListingScreen extends StatelessWidget{
+class DisplayVideosListingScreen extends StatefulWidget{
+  @override
+  State<DisplayVideosListingScreen> createState() => _DisplayVideosListingScreenState();
+}
+
+class _DisplayVideosListingScreenState extends State<DisplayVideosListingScreen> {
+
+
+  late String categoryName;
+
+  @override
+  void initState() {
+    categoryName = AppConstants.categoryList.first;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+        appBar: AppBar(
+          title: Text(categoryName),
+          centerTitle: true,
+          actions: [
+            PopupMenuButton(onSelected: (value) {
+              categoryName = value;
+              setState(() {
+
+              });
+            }, itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  child: Text(AppConstants.categoryList[0]),
+                  value: AppConstants.categoryList[0],
+                ),
+                PopupMenuItem(
+                  child: Text(AppConstants.categoryList[1]),
+                  value: AppConstants.categoryList[1],
+                ),
+                PopupMenuItem(
+                  child: Text(AppConstants.categoryList[2]),
+                  value: AppConstants.categoryList[2],
+                ),
+                PopupMenuItem(
+                  child: Text(AppConstants.categoryList[3]),
+                  value: AppConstants.categoryList[3],
+                ),
+                PopupMenuItem(
+                  child: Text(AppConstants.categoryList[4]),
+                  value: AppConstants.categoryList[4],
+                ),
+
+              ];
+            })
+          ],
+        ),
       body: Center(
         child: FutureBuilder(
           future: VideoListingConfig().hitServerToFetchVideosList(),
@@ -50,4 +103,14 @@ class DisplayVideosListingScreen extends StatelessWidget{
     );
   }
 
+  List<DropdownMenuItem<String>> prepareCategoryDropdown(List<VideoModel> videosList){
+
+    List<DropdownMenuItem<String>> menuItems = [
+      DropdownMenuItem(child: Text("USA"),value: "USA"),
+      DropdownMenuItem(child: Text("Canada"),value: "Canada"),
+      DropdownMenuItem(child: Text("Brazil"),value: "Brazil"),
+      DropdownMenuItem(child: Text("England"),value: "England"),
+    ];
+    return menuItems;
+  }
 }
