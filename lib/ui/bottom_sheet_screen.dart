@@ -44,7 +44,7 @@ class BottomSheetScreen extends StatelessWidget{
             ),
             SalomonBottomBarItem(
                 icon: Icon(Icons.video_call),
-                title: Text("Orders")
+                title: Text("Videos")
             ),
             SalomonBottomBarItem(
                 icon: Icon(Icons.phone),

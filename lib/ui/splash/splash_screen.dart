@@ -17,7 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(Duration(seconds: 3), (){
-      context.router.replace(const BottomSheetRoute());
+      //context.router.replace(const BottomSheetRoute());
+      context.router.replace(const VideoPlayerRoute());
     });
     super.initState();
   }

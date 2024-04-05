@@ -5,6 +5,7 @@ import '../ui/bottom_sheet_screen.dart';
 import '../ui/intro/intro_screens.dart';
 import '../ui/splash/splash_screen.dart';
 import '../ui/videos/display_videos_listing_screen.dart';
+import '../ui/videos/video_player_screen.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
@@ -33,6 +34,10 @@ class AppRouter extends _$AppRouter{
           ),
 
         ]
+    ),
+    AutoRoute(
+        page: VideoPlayerRoute.page,
+        path: "/videoPlayer",
     ),
   ];
 }
