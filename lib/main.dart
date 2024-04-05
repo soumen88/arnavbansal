@@ -1,8 +1,20 @@
+import 'package:arnavbansal/core/default_firebase_options.dart';
+import 'package:arnavbansal/core/firebase_remote_config_service.dart';
 import 'package:arnavbansal/routing/app_router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async{
+  await init();
   runApp(MyApp());
+}
+
+Future<void> init() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.getFirebaseOptions()
+  );
+  await FirebaseRemoteConfigService().initialize();
 }
 
 class MyApp extends StatelessWidget{
@@ -12,7 +24,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: "Edureka Learning app",
+      title: "Peace Pulse",
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(),
       theme: ThemeData(

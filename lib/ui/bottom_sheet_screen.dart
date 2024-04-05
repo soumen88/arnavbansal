@@ -4,11 +4,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../constants/color_constants.dart';
+
 @RoutePage()
 class BottomSheetScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      backgroundColor: ColorConstants.kPurpleColorBackGround,
       appBarBuilder: (BuildContext context, TabsRouter tabsRouter){
         if(tabsRouter.activeIndex == 0){
           return AppBar(
@@ -33,6 +36,7 @@ class BottomSheetScreen extends StatelessWidget{
       ],
       bottomNavigationBuilder: (BuildContext context, TabsRouter tabsRouter){
         return SalomonBottomBar(
+          selectedItemColor: Colors.white,
           items: [
             SalomonBottomBarItem(
                 icon: Icon(Icons.home_filled),

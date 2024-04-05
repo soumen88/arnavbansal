@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "604033658780",
+    "project_id": "peace-pulse",
+    "storage_bucket": "peace-pulse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604033658780:android:b6f27037bfc84153792259",
+        "android_client_info": {
+          "package_name": "com.arnav.bansal.arnavbansal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyoevrPiDr3v9_UlzrRMJyZUQWetbhpjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

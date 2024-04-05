@@ -24,14 +24,21 @@ class IntroScreen extends StatelessWidget{
             PageViewModel(
               titleWidget: EmptyWidget(),
               bodyWidget: EmptyWidget(),
-              image: buildImage("assets/images/banner2.png"),
+              image: buildImage("assets/images/intro_2.png"),
               //getPageDecoration, a method to customise the page style
               decoration: getPageDecoration(),
             ),
             PageViewModel(
               titleWidget: EmptyWidget(),
               bodyWidget: EmptyWidget(),
-              image: buildImage("assets/images/banner3.png"),
+              image: buildImage("assets/images/intro_3.png"),
+              //getPageDecoration, a method to customise the page style
+              decoration: getPageDecoration(),
+            ),
+            PageViewModel(
+              titleWidget: EmptyWidget(),
+              bodyWidget: EmptyWidget(),
+              image: buildImage("assets/images/intro_3.png"),
               //getPageDecoration, a method to customise the page style
               decoration: getPageDecoration(),
             ),
@@ -44,25 +51,12 @@ class IntroScreen extends StatelessWidget{
           showDoneButton: true,
           showNextButton: true,
           showSkipButton: true,
-          skip: const Text(
-              "Skip",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: ColorConstants.kPinkColor
-              )
-          ),
+          skip: EmptyWidget(),
           next: const Icon(
             Icons.forward,
             color: ColorConstants.kPinkColor,
           ),
-          done: const Text(
-              "Done",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: ColorConstants.kPinkColor,
-                  fontSize: 18
-              )
-          ),
+          done: EmptyWidget(),
           onSkip: (){
 
           },

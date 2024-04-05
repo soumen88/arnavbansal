@@ -38,6 +38,11 @@ dependencies:
   auto_route: ^8.0.0
   salomon_bottom_bar: ^3.3.2
   introduction_screen: ^3.1.14
+  #Firebase plugin
+  firebase_core: ^2.28.0
+
+  #Fetch data from firebase remote config
+  firebase_remote_config: ^4.4.0
   
 dev_dependencies:
   flutter_test:
