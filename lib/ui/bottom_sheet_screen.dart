@@ -12,7 +12,7 @@ class BottomSheetScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       backgroundColor: ColorConstants.kPurpleColorBackGround,
-      appBarBuilder: (BuildContext context, TabsRouter tabsRouter){
+      /*appBarBuilder: (BuildContext context, TabsRouter tabsRouter){
         if(tabsRouter.activeIndex == 0){
           return AppBar(
             title: Text("Home Screen"),
@@ -28,9 +28,8 @@ class BottomSheetScreen extends StatelessWidget{
             title: Text("Contact with us"),
           );
         }
-      },
+      },*/
       routes: [
-        IntroRoute(),
         DisplayVideosListingRoute(),
         AboutUsRoute()
       ],
@@ -39,16 +38,12 @@ class BottomSheetScreen extends StatelessWidget{
           selectedItemColor: Colors.white,
           items: [
             SalomonBottomBarItem(
-                icon: Icon(Icons.home_filled),
-                title: Text("Home")
-            ),
-            SalomonBottomBarItem(
                 icon: Icon(Icons.video_call),
                 title: Text("Videos")
             ),
             SalomonBottomBarItem(
-                icon: Icon(Icons.phone),
-                title: Text("Contact us")
+                icon: Icon(Icons.people),
+                title: Text("About us")
             )
           ],
           onTap: (int index){

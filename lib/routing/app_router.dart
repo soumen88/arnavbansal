@@ -17,13 +17,13 @@ class AppRouter extends _$AppRouter{
         initial: true
     ),
     AutoRoute(
+        page: IntroRoute.page,
+        path: "/intro"
+    ),
+    AutoRoute(
         path: "/bottombarnavigation",
         page: BottomSheetRoute.page,
         children: [
-          AutoRoute(
-              page: IntroRoute.page,
-              path: "intro"
-          ),
           AutoRoute(
               page: DisplayVideosListingRoute.page,
               path: "videos"

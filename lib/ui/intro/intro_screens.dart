@@ -1,3 +1,4 @@
+import 'package:arnavbansal/routing/app_router.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -44,21 +45,27 @@ class IntroScreen extends StatelessWidget{
             ),
           ],
           onDone: () {
-
+            context.router.replace(const BottomSheetRoute());
           },
           //ClampingScrollPhysics prevent the scroll offset from exceeding the bounds of the content.
           scrollPhysics: const ClampingScrollPhysics(),
           showDoneButton: true,
           showNextButton: true,
           showSkipButton: true,
-          skip: EmptyWidget(),
+          skip: const Text(
+          "Skip",
+            style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: ColorConstants.kPinkColor
+            )
+          ),
           next: const Icon(
             Icons.forward,
             color: ColorConstants.kPinkColor,
           ),
           done: EmptyWidget(),
           onSkip: (){
-
+            context.router.replace(const BottomSheetRoute());
           },
           dotsDecorator: getDotsDecorator()
       ),

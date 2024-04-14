@@ -20,7 +20,7 @@ class DisplayVideosListingScreen extends StatefulWidget{
 class _DisplayVideosListingScreenState extends State<DisplayVideosListingScreen> {
 
 
-  late String categoryName;
+  String? categoryName;
 
   @override
   void initState() {
@@ -33,44 +33,33 @@ class _DisplayVideosListingScreenState extends State<DisplayVideosListingScreen>
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(categoryName),
+          title: Text(
+              categoryName ?? AppConstants.categoryList.first,
+              style: TextStyle(
+                color: Colors.white
+              ),
+          ),
           centerTitle: true,
           actions: [
-            PopupMenuButton(onSelected: (value) {
+            PopupMenuButton(onSelected: (String value) {
               categoryName = value;
               setState(() {
 
               });
-            }, itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  child: Text(AppConstants.categoryList[0]),
-                  value: AppConstants.categoryList[0],
-                ),
-                PopupMenuItem(
-                  child: Text(AppConstants.categoryList[1]),
-                  value: AppConstants.categoryList[1],
-                ),
-                PopupMenuItem(
-                  child: Text(AppConstants.categoryList[2]),
-                  value: AppConstants.categoryList[2],
-                ),
-                PopupMenuItem(
-                  child: Text(AppConstants.categoryList[3]),
-                  value: AppConstants.categoryList[3],
-                ),
-                PopupMenuItem(
-                  child: Text(AppConstants.categoryList[4]),
-                  value: AppConstants.categoryList[4],
-                ),
-
-              ];
-            })
+            },
+              itemBuilder: (BuildContext context) {
+                return _getListWidgets();
+              }
+            )
           ],
+          iconTheme: IconThemeData(
+              color: Colors.white
+          ),
+          backgroundColor: ColorConstants.kPurpleColorBackGround,
         ),
       body: Center(
         child: FutureBuilder(
-          future: VideoListingConfig().hitServerToFetchVideosList(),
+          future: VideoListingConfig().hitServerToFetchVideosList(categoryName),
           builder: (BuildContext context, AsyncSnapshot<List<VideoModel>> snapshot){
             switch(snapshot.connectionState){
               case ConnectionState.waiting :{
@@ -103,14 +92,15 @@ class _DisplayVideosListingScreenState extends State<DisplayVideosListingScreen>
     );
   }
 
-  List<DropdownMenuItem<String>> prepareCategoryDropdown(List<VideoModel> videosList){
-
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("USA"),value: "USA"),
-      DropdownMenuItem(child: Text("Canada"),value: "Canada"),
-      DropdownMenuItem(child: Text("Brazil"),value: "Brazil"),
-      DropdownMenuItem(child: Text("England"),value: "England"),
-    ];
-    return menuItems;
+  List<PopupMenuEntry<String>> _getListWidgets() {
+    List<PopupMenuEntry<String>> popupItemsList = [];
+    for(var item in AppConstants.categoryList){
+      var popupItem =  PopupMenuItem(
+        child: Text(item),
+        value: item,
+      );
+      popupItemsList.add(popupItem);
+  }
+    return popupItemsList;
   }
 }

@@ -11,7 +11,7 @@ class VideoListingConfig{
   final _TAG = "VideoListingConfig";
   final remoteConfig = FirebaseRemoteConfigService();
 
-  Future<List<VideoModel>> hitServerToFetchVideosList() async{
+  Future<List<VideoModel>> hitServerToFetchVideosList(String? categoryName) async{
     List<VideoModel> videosList = [];
     try{
       var videosJson = json.decode(remoteConfig.getString(AppConstants.kVideosJson)) ;
@@ -21,7 +21,20 @@ class VideoListingConfig{
         _logger.log(TAG: _TAG, message: "Videos json $videoModel");
         videosList.add(videoModel);
       }
-      return Future.value(videosList);
+      if(categoryName != null){
+        List<VideoModel> filteredList = videosList.where((VideoModel videomodel) => videomodel.categoryName == categoryName ).toList();
+        _logger.log(TAG: _TAG, message: "Filtered list $filteredList");
+        if(filteredList.isNotEmpty){
+          return Future.value(filteredList);
+        }
+        else{
+          return Future.value(videosList);
+        }
+      }
+      else{
+        return Future.value(videosList);
+      }
+
     }
     catch(exception){
       _logger.log(TAG: _TAG, message: "Exception in fetching");
