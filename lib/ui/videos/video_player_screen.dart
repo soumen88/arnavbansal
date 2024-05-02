@@ -3,6 +3,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../constants/app_constants.dart';
+
 @RoutePage()
 class VideoPlayerScreen extends StatefulWidget {
   String videoId ;
@@ -105,17 +107,16 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       builder: (context, player) => Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 30.0),
-
+          leading: BackButton(
+              color: Colors.white
           ),
           title: const Text(
-            'Youtube Player Flutter',
-            style: TextStyle(color: Colors.white),
+              "Videos ${AppConstants.kAppName}",
+            style: TextStyle(
+                color: Colors.white
+            ),
           ),
-          actions: [
-
-          ],
+          backgroundColor: ColorConstants.kPurpleColorBackGround,
         ),
         body: ListView(
           children: [

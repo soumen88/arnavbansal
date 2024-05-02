@@ -2,19 +2,35 @@ import 'package:arnavbansal/constants/app_constants.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/color_constants.dart';
+
 @RoutePage()
 class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+        title: const Text(
+            "About ${AppConstants.kAppName}",
+          style: TextStyle(
+              color: Colors.white
+          ),
+        ),
+        backgroundColor: ColorConstants.kPurpleColorBackGround,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 60.0,
-              backgroundImage: AssetImage(
-                'assets/images/arnav_bansal.jpeg',
+            SizedBox(height: 15.0),
+            Container(
+              alignment: Alignment.center,
+              child: CircleAvatar(
+                radius: 60.0,
+                backgroundImage: AssetImage(
+                  'assets/images/arnav_bansal.jpeg',
+                ),
               ),
             ),
             Padding(

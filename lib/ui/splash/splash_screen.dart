@@ -20,13 +20,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Timer(Duration(seconds: 3), () async{
       bool isHome = await SplashValueNotifier().init();
-      if(isHome){
+      //context.router.replace(const IntroRoute());
+      /*if(isHome){
         context.router.replace(const BottomSheetRoute());
         //context.router.replace(const IntroRoute());
       }
       else{
         context.router.replace(const IntroRoute());
-      }
+      }*/
 
       //context.router.replace(const VideoPlayerRoute());
     });

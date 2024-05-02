@@ -32,7 +32,7 @@ class IntroScreen extends StatelessWidget{
             PageViewModel(
               titleWidget: EmptyWidget(),
               bodyWidget: EmptyWidget(),
-              image: buildImage("assets/images/intro_3.png"),
+              image: buildImage("assets/images/intro_4.png"),
               //getPageDecoration, a method to customise the page style
               decoration: getPageDecoration(),
             ),
@@ -63,7 +63,13 @@ class IntroScreen extends StatelessWidget{
             Icons.forward,
             color: ColorConstants.kPinkColor,
           ),
-          done: EmptyWidget(),
+          done: const Text(
+              "Done",
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: ColorConstants.kPinkColor
+              )
+          ),
           onSkip: (){
             context.router.replace(const BottomSheetRoute());
           },
